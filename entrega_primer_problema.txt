@@ -1,0 +1,18 @@
+Notas: 
+- se tiene 20 prendas.
+- se tiene 210 combinaciones de incompatibilidades entre prendas.
+- se tiene los tiempos de lavados de cada prenda.
+- el lavado de cada prenda es el mayor tiempo de lavado "mas sucio" de sus prendas compatibles.
+
+Observaciones:
+- Se puede ver que se tienen incompatibilidades repetidas por ejemplo: 1 19 = 19 1
+   de esta manera reduzco la cantidad de incompatibilidades
+- Esta ordenado por prenda de menor a mayor.
+
+
+Solucion:
+- Se modela el enunciado con objetos para poder solucionar con situaciones de la vida real.
+- La Lavandera agrupa cada Prenda con sus prendas compatibles. (Separa las ropas de color y blanca)
+
+
+

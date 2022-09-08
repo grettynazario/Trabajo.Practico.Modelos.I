@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tpmodelosilavanderia;
+package ar.com.fiuba.tp.modelosI.main;
+
+import ar.com.fiuba.tp.modelosI.model.Lavanderia;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +19,10 @@ public class TPModelosILavanderia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Lavanderia lavanderia = new Lavanderia();
+        lavanderia.lavarRopa();
+        
     }
-    
+
+
 }
