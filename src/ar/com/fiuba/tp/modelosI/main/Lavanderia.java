@@ -5,22 +5,28 @@
  */
 package ar.com.fiuba.tp.modelosI.main;
 
-import ar.com.fiuba.tp.modelosI.model.Lavanderia;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import ar.com.fiuba.tp.modelosI.model.Lavandera;
+import java.io.File;
+import java.util.logging.Logger;
 
 /**
  *
  * @author IngrithNazario
  */
-public class TPModelosILavanderia {
+public class Lavanderia {
+
+    
+    private static File _input;
+    private static Lavandera _lavandera;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Lavanderia lavanderia = new Lavanderia();
-        lavanderia.lavarRopa();
+         _input = new File("resources/input.txt");
+        _lavandera = new Lavandera(_input);
+        _lavandera.lavar();
+        _lavandera.prepararRopaLavada();
         
     }
 

@@ -29,6 +29,7 @@ public class Lavandera {
 
     public Lavandera(File datos) {
         _prendas = new Prendas();
+        logger.info("|Lavandera| separando ropa...");
         try {
             Scanner reader = new Scanner(datos);
             while (reader.hasNextLine()) {
@@ -42,10 +43,12 @@ public class Lavandera {
     }
 
     public void lavar() {
-        logger.info("|Lavandera| separando ropa...");
+        logger.info("|Lavandera| Lavando ropa...");
+        
         for (int i = 0; i < _cantidadRopa; i++) {
             String prenda_i = String.valueOf(i + 1);
             ArrayList<String> prendasIncompatibles = _incompatibilidades.get(prenda_i);
+            logger.info("|Lavandera| lavando prenda: " + prenda_i);
             for (int j = 0; j < _cantidadRopa; j++) {
                 String prenda_j = String.valueOf(j + 1);
                 if (i != j && !prendasIncompatibles.contains(prenda_j)) {
@@ -54,7 +57,7 @@ public class Lavandera {
             }
 
         }
-        prepararRopaLavada();
+        logger.info("|Lavandera| prendas lavadas.");
     }
 
     private void guardarInformacion(String data) {
@@ -80,15 +83,15 @@ public class Lavandera {
         }
     }
 
-    private void prepararRopaLavada() {
+    public void prepararRopaLavada() {
         try {
             FileWriter writer = new FileWriter("resources/lavadoOutput.txt");
-            logger.info("|Lavandera| lavando ropa.");
             for (Prenda prenda : _prendas.getPrendas()) {
+                logger.info("|Lavandera| doblabando prenda: " + prenda.getNombre());
                 writer.write(prenda.getNombre() + " " + prenda.getPrendaMasSucia() + "\n");
             }
             writer.close();
-            logger.info("|Lavandera| prendas lavadas.");
+            logger.info("|Lavandera| prendas dobladas con éxito.");
             logger.info("|Lavanderia| Archivo Solución creado con éxito.");
 
         } catch (IOException e) {
