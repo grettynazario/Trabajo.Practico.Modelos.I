@@ -19,7 +19,6 @@ Solucion:
 - Debo considerar primero tratar de agregarlo a su lavado si esta vacio, si esta lleno me fijo si es compatible con las prendas. 
 Si no se puede agregar asu lavado me fijo en los lavados made mayor tiempo ya que esa prenda no puede ser lavada en lavados menores.
 
-
 Opiniones:
 - Al principio me resulto dificil entender el enunciado.
 - Me parecio corto y al llevar el problema a una situacion real modelando con objetos se hace mucho mas rapido y facil.
