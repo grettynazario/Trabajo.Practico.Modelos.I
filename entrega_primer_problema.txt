@@ -13,6 +13,12 @@ Observaciones:
 Solucion:
 - Se modela el enunciado con objetos para poder solucionar con situaciones de la vida real.
 - La Lavandera agrupa cada Prenda con sus prendas compatibles. (Separa las ropas de color y blanca)
+- Para escribir el archivo solucion le pregunto a la Lavandera de cada prenda cual es su prenda compatible mas sucia.
+
+Opiniones:
+- Al principio me resulto dificil entender el enunciado.
+- Me parecio corto y al llevar el problema a una situacion real modelando con objetos se hace mucho mas rapido y facil.
+- Me hubiese podido implementar con un grafo pero al ser corto, no valia la pena perder el tiempo (que no tenia).
 
 
 

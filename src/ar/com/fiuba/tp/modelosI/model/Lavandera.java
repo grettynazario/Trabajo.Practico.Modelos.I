@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Lavandera {
 
-    private Logger logger = Logger.getLogger("Lavandera");
+    private Logger logger = Logger.getLogger("Lavanderia");
     private int _cantidadRopa;
     private HashMap<String, ArrayList<String>> _incompatibilidades = new HashMap<>();
     private HashMap<String, String> _tiemposLavados = new HashMap<>();
@@ -37,11 +37,12 @@ public class Lavandera {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            logger.log(Level.WARNING, "Error leyendo el archivo." + datos.getName(), e);
+            logger.warning("Error leyendo el archivo." + datos.getName());
         }
     }
 
     public void lavar() {
+        logger.info("|Lavandera| separando ropa...");
         for (int i = 0; i < _cantidadRopa; i++) {
             String prenda_i = String.valueOf(i + 1);
             ArrayList<String> prendasIncompatibles = _incompatibilidades.get(prenda_i);
@@ -53,6 +54,7 @@ public class Lavandera {
             }
 
         }
+        prepararRopaLavada();
     }
 
     private void guardarInformacion(String data) {
@@ -78,5 +80,20 @@ public class Lavandera {
         }
     }
 
+    private void prepararRopaLavada() {
+        try {
+            FileWriter writer = new FileWriter("resources/lavadoOutput.txt");
+            logger.info("|Lavandera| lavando ropa.");
+            for (Prenda prenda : _prendas.getPrendas()) {
+                writer.write(prenda.getNombre() + " " + prenda.getPrendaMasSucia() + "\n");
+            }
+            writer.close();
+            logger.info("|Lavandera| prendas lavadas.");
+            logger.info("|Lavanderia| Archivo Solución creado con éxito.");
+
+        } catch (IOException e) {
+            logger.warning("Error intentando escribir el archivo solucion." + e.getMessage());
+        }
+    }
 
 }
