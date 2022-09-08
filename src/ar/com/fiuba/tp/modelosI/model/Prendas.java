@@ -10,8 +10,7 @@ import java.util.HashMap;
 public class Prendas {
 
     private final HashMap<String,Prenda>_prendas;
-
-
+    
     public Prendas() {
         _prendas = new HashMap<String,Prenda>();
     }
@@ -26,7 +25,7 @@ public class Prendas {
         padre.add(hijo);
     }
 
-    void addTiempoLavado(final String prenda,final int tiempo) {
+    void addTiempoLavado(final String prenda,final String tiempo) {
         Prenda canasto = _prendas.get(prenda);
         canasto.addTiempoLavado(tiempo);
     }

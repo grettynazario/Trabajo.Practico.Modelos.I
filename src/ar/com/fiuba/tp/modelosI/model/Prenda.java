@@ -15,7 +15,7 @@ public class Prenda {
 
     private final ArrayList<Prenda> _prendasCompatibles;
     private final String _nombre;
-    private int _tiempoLavado;
+    private String _tiempoLavado;
 
     public Prenda(final String nombre) {
         _prendasCompatibles = new ArrayList<Prenda>();
@@ -26,25 +26,35 @@ public class Prenda {
         _prendasCompatibles.add(prenda);
     }
 
-    public void addTiempoLavado(final int tiempo) {
+    public void addTiempoLavado(final String tiempo) {
         _tiempoLavado = tiempo;
     }
-    
-    public String getPrendaMasSucia() {
-        int sucia = 0;
-        for (Prenda prenda : _prendasCompatibles) {
-            if (prenda.getTiempoLavado() > sucia) {
-                sucia = prenda.getTiempoLavado();
-            }
-        }
-        return String.valueOf(sucia);
-    }
 
-    public int getTiempoLavado() {
+//    public String getPrendaMasSucia() {
+//        int sucia = 0;
+//        for (Prenda prenda : _prendasCompatibles) {
+//            if (prenda.getTiempoLavado() > sucia) {
+//                sucia = prenda.getTiempoLavado();
+//            }
+//        }
+//        return String.valueOf(sucia);
+//    }
+
+    public String getTiempoLavado() {
         return _tiempoLavado;
     }
 
     public String getNombre() {
         return _nombre;
     }
+
+    boolean esCompatible(Prenda aComparar) {
+        for (Prenda prenda : _prendasCompatibles) {
+            if (prenda.getNombre().equals(aComparar.getNombre())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

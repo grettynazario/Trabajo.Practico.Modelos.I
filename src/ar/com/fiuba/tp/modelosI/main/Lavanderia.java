@@ -26,7 +26,6 @@ public class Lavanderia {
          _input = new File("resources/input.txt");
         _lavandera = new Lavandera(_input);
         _lavandera.lavar();
-        _lavandera.prepararRopaLavada();
         
     }
 

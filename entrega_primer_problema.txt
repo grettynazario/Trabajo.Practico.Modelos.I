@@ -13,7 +13,12 @@ Observaciones:
 Solucion:
 - Se modela el enunciado con objetos para poder solucionar con situaciones de la vida real.
 - La Lavandera agrupa cada Prenda con sus prendas compatibles. (Separa las ropas de color y blanca)
-- Para escribir el archivo solucion le pregunto a la Lavandera de cada prenda cual es su prenda compatible mas sucia.
+- Corrijo el codigo para hacer que cada prenda este en el lavado correcto sin tener que estar con prendas incompatibles
+  como ya tengo ordenadas las prendas con sus compatibles y a su vez cada prenda tiene su lavado voy a fijarme en que lavado puedo 
+   meter cada prenda teniendo en cuenta sus incompatibles.
+- Debo considerar primero tratar de agregarlo a su lavado si esta vacio, si esta lleno me fijo si es compatible con las prendas. 
+Si no se puede agregar asu lavado me fijo en los lavados made mayor tiempo ya que esa prenda no puede ser lavada en lavados menores.
+
 
 Opiniones:
 - Al principio me resulto dificil entender el enunciado.
