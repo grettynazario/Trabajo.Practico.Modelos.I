@@ -34,11 +34,15 @@ public class Canastos {
             return;
         }
         //Me fijo en las otras otras
-        for (Canasto canast : _canastos.values()) {
-            if (canast.esCompatible(prenda)) {
-                logger.info("|Lavandera| prenda: " + prenda.getNombre() + " asignado a lavado " + canasto.getNombreLavado());
-                canast.addPrenda(prenda);
-                return;
+        for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i<10; i++) {
+            Canasto siguienteCanasta = _canastos.get(String.valueOf(i));
+            if(_canastos.get(String.valueOf(i)) != null){
+                if (siguienteCanasta.esCompatible(prenda)) {
+                    logger.info("|Lavandera| prenda: " + prenda.getNombre() + " asignado a lavado " + siguienteCanasta.getNombreLavado());
+                    siguienteCanasta.addPrenda(prenda);
+                    return;
+                }
+                
             }
         }
        //No hay canasto compatible

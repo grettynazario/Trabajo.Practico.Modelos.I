@@ -6,6 +6,7 @@
 package ar.com.fiuba.tp.modelosI.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -39,7 +40,6 @@ public class Prenda {
 //        }
 //        return String.valueOf(sucia);
 //    }
-
     public String getTiempoLavado() {
         return _tiempoLavado;
     }
@@ -55,6 +55,15 @@ public class Prenda {
             }
         }
         return false;
+    }
+
+    public boolean esCompatible(List<Prenda> prendas) {
+        for (Prenda prenda : prendas) {
+            if (!this.esCompatible(prenda)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

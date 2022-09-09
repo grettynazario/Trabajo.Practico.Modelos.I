@@ -34,4 +34,8 @@ public class Prendas {
        return _prendas.values();
     }
 
+    public Prenda getPrenda(String key) {
+        return _prendas.get(key);
+    }
+
 }

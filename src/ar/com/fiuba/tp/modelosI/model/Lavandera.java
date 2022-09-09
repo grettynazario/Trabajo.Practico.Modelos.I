@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -25,13 +26,16 @@ public class Lavandera {
     private HashMap<String, ArrayList<String>> _incompatibilidades = new HashMap<>();
     private Prendas _prendas;
     private Canastos _canastos;
+    private Lavados _lavados;
 
     public Lavandera(File datos) {
         _prendas = new Prendas();
         _canastos = new Canastos();
+        _lavados = new Lavados();
         logger.info("|Lavandera| recibiendo ropa...");
         guardarInformacionDePrendas(datos);
         asignarPrendasCompatibles();
+        asignarLavados();
     }
 
     public void lavar() {
@@ -41,10 +45,12 @@ public class Lavandera {
 
     private void separarPrendas() {
         logger.info("|Lavandera| Separando prendas en sus correspondientes lavados...");
-        for (Prenda prenda : _prendas.getPrendas()) {
-            logger.info("|Lavandera| separando prenda: " + prenda.getNombre());
-            _canastos.asignarCanasto(prenda);
-        }
+//        for (Prenda prenda : _prendas.getPrendas()) {
+//            logger.info("|Lavandera| separando prenda: " + prenda.getNombre());
+//            //_canastos.asignarCanasto(prenda);
+//           
+//        }
+        _lavados.asignarPrendasSinLavados();
         logger.info("|Lavandera| prendas separadas.");
     }
 
@@ -56,10 +62,16 @@ public class Lavandera {
 //            for (Prenda prenda : _canastos.getPrendasSinCanasto()) {
 //                writer.write("c " + prenda.getNombre() + "\n");
 //            }
-            for (Canasto canasto : _canastos.getCanastos()) {
-                for (Prenda prenda : canasto.getPrendas()) {
+//            for (Canasto canasto : _canastos.getCanastos()) {
+//                for (Prenda prenda : canasto.getPrendas()) {
+//                    logger.info("|Lavandera| lavando prenda: " + prenda.getNombre());
+//                    writer.write(prenda.getNombre() + " " + canasto.getNombreLavado() + "\n");
+//                }
+//            }
+            for (Lavado lavado : _lavados.getLavados()) {
+                for (Prenda prenda : lavado.getPrendas()) {
                     logger.info("|Lavandera| lavando prenda: " + prenda.getNombre());
-                    writer.write(prenda.getNombre() + " " + canasto.getNombreLavado() + "\n");
+                    writer.write(prenda.getNombre() + " " + lavado.getNombre() + "\n");
                 }
             }
             writer.close();
@@ -122,7 +134,7 @@ public class Lavandera {
     private void asignarTiempoLavado(String data) {
         String[] n = data.split(" ");
         _prendas.addTiempoLavado(n[1], n[2]);
-        _canastos.add(new Canasto(n[2]));
+        _canastos.add(new Canasto(n[2]));        
     }
 
     private void agregarMateriales(String data) {
@@ -131,6 +143,12 @@ public class Lavandera {
             String prenda_i = String.valueOf(i + 1);
             _incompatibilidades.put(prenda_i, new ArrayList<String>());
             _prendas.add(prenda_i, new Prenda(prenda_i));
+        }
+    }
+
+    private void asignarLavados() {
+        for(Prenda prenda : _prendas.getPrendas()){
+            _lavados.add(prenda.getTiempoLavado(), prenda);
         }
     }
 }
