@@ -19,8 +19,9 @@ Solucion:
 - Debo considerar primero tratar de agregarlo a su lavado si esta vacio, si esta lleno me fijo si es compatible con las prendas. 
 Si no se puede agregar asu lavado me fijo en los lavados made mayor tiempo ya que esa prenda no puede ser lavada en lavados menores.
 - Cambio la solucion:  junto todos los tiempo de lavados iguales y a su vez tengan prendas compatibles, dejando las prendas incompatibles para luego asignarle un lavado
-- Noto que hay muchas prendas incompatibles con las prendas 1 y 3 al tener un lavado de 9 y 10 respectivamente me hace dificil poder asignarle
-a las prendas que quedaron en otro lavado mayor o igual asu lavado.
+- Noto el caso en donde tengo el lavado mas alto = 10 con 3 prendas que tienen ese lavado 2,7 y 17 pero el 2 y 7 no son compatibles asi que tomo la decision
+de dejarlos en un nuevo canasto con suciedad 11. 
+Haciendo esto note que me faltaban 2 canastos mas para poder completar el lavado de todos las prendas
 
 Opiniones:
 - Al principio me resulto dificil entender el enunciado.

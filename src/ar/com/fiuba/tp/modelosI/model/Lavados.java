@@ -42,11 +42,12 @@ public class Lavados {
     }
 
     public void asignarPrendasSinLavados() {
+        int maximoLavados = 11;
         boolean noAgregado = true;
         for (Prenda prenda : _prendasIncompatibles) {
             noAgregado = true;
             //Me fijo en los otros lavados mayor a su lavado
-            for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i < 11; i++) {
+            for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i < maximoLavados; i++) {
                 Lavado lavado = _lavados.get(String.valueOf(i));
                 if (lavado != null && noAgregado) {
                     if (lavado.sePuedelavar(prenda)) {
@@ -54,6 +55,11 @@ public class Lavados {
                         noAgregado = false;
                     }
                 }
+            }
+            if (noAgregado) {
+                this.add(String.valueOf(maximoLavados), prenda);
+                maximoLavados ++;
+                
             }
         }
     }
