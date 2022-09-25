@@ -5,6 +5,11 @@ Impresion:
 Observaciones:
 - Se observa que hay un error de harcodeo con la cantidad maxima de lavados. haciendo que los lavados se agreguen mal 
 (error de recorrer y editar un array a la misma vez)
+-Me lanza un error de 1 y 2 no pueden estar en el lavado 4. 
+-Ya no tengo las definiciones completas, es decir que 
+        e 1 2
+        e 2 1 <-- este dato ya no esta porque esta definido en 1, y asi debe ser para varios.
+
 
 
 Soluciones:
@@ -14,4 +19,4 @@ Soluciones:
 
 
 Opiniones:
-- solo encontre ese error por lo que se me hizo menos rebuscado que la primera vez.
+- solo encontre ese error de harcodeo por lo que se me hizo menos rebuscado que la primera vez.
