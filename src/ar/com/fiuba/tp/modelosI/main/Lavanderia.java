@@ -7,7 +7,6 @@ package ar.com.fiuba.tp.modelosI.main;
 
 import ar.com.fiuba.tp.modelosI.model.Lavandera;
 import java.io.File;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +22,7 @@ public class Lavanderia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         _input = new File("resources/input.txt");
+         _input = new File("resources/problema_2.txt");
         _lavandera = new Lavandera(_input);
         _lavandera.lavar();
         

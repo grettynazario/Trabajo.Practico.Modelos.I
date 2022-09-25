@@ -41,8 +41,9 @@ public class Lavados {
         return _lavados.values();
     }
 
-    public void asignarPrendasSinLavados() {
-        int maximoLavados = 11;
+    public void asignarPrendasSinLavados(final int cantidad) {
+        int maximoLavados = cantidad;
+        int lavadoNuevo = cantidad +1;
         boolean noAgregado = true;
         for (Prenda prenda : _prendasIncompatibles) {
             noAgregado = true;
@@ -57,8 +58,8 @@ public class Lavados {
                 }
             }
             if (noAgregado) {
-                this.add(String.valueOf(maximoLavados), prenda);
-                maximoLavados ++;
+                this.add(String.valueOf(lavadoNuevo), prenda);
+                lavadoNuevo ++;
                 
             }
         }

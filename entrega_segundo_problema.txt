@@ -1,0 +1,17 @@
+Impresion:
+- Ahora tengo 385 prendas que en comparacion con el problema 1, que tenia 20 prendas es probable que el codigo empiece
+ a tener fallas
+
+Observaciones:
+- Se observa que hay un error de harcodeo con la cantidad maxima de lavados. haciendo que los lavados se agreguen mal 
+(error de recorrer y editar un array a la misma vez)
+
+
+Soluciones:
+- Agrando la cantidad maxima de lavados pasando de 10 a 100, pero observo que me empieza a agregar los lavados a partir del 100 en adelante
+- Para no depender de la constante: al leer el archivo problema_2.txt saco y guardo el lavado maximo en una variable 
+(al leer los lavados voy comparando cada uno hasta quedarme con el de mayor lavado, asi a apartir de ahi puedo asignar nuevos lavados para las prendas que no sean compatibles con otras del mismo lavado)
+
+
+Opiniones:
+- solo encontre ese error por lo que se me hizo menos rebuscado que la primera vez.

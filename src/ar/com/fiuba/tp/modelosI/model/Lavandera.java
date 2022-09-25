@@ -27,6 +27,7 @@ public class Lavandera {
     private Prendas _prendas;
     private Canastos _canastos;
     private Lavados _lavados;
+    private Integer CANT_MAX_LAVADO = 0;
 
     public Lavandera(File datos) {
         _prendas = new Prendas();
@@ -50,7 +51,7 @@ public class Lavandera {
 //            //_canastos.asignarCanasto(prenda);
 //           
 //        }
-        _lavados.asignarPrendasSinLavados();
+        _lavados.asignarPrendasSinLavados(CANT_MAX_LAVADO);
         logger.info("|Lavandera| prendas separadas.");
     }
 
@@ -133,6 +134,8 @@ public class Lavandera {
 
     private void asignarTiempoLavado(String data) {
         String[] n = data.split(" ");
+        if(Integer.valueOf(n[2]) > CANT_MAX_LAVADO)
+            CANT_MAX_LAVADO = Integer.valueOf(n[2]);
         _prendas.addTiempoLavado(n[1], n[2]);
         _canastos.add(new Canasto(n[2]));        
     }
