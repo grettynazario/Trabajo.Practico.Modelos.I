@@ -17,22 +17,21 @@ import java.util.List;
 public class Lavados {
 
     public HashMap<String, Lavado> _lavados;
-    private List<Prenda> _prendasIncompatibles;
+    private List<Prenda> _prendasSinLavado;
 
     public Lavados() {
         _lavados = new HashMap<>();
-        _prendasIncompatibles = new ArrayList<>();
+        _prendasSinLavado = new ArrayList<>();
     }
 
     public void add(final String key, final Prenda prenda) {
         if (_lavados.containsKey(key)) {
             Lavado lavado = _lavados.get(key);
             if (!lavado.add(prenda)) {
-                _prendasIncompatibles.add(prenda);
+                _prendasSinLavado.add(prenda);
             }
         } else {
-            Lavado lavado = new Lavado(key);
-            lavado.add(prenda);
+            Lavado lavado = new Lavado(key, prenda);
             _lavados.put(key, lavado);
         }
     }
@@ -43,23 +42,25 @@ public class Lavados {
 
     public void asignarPrendasSinLavados(final int cantidad) {
         int maximoLavados = cantidad;
-        int lavadoNuevo = cantidad +1;
+        //int lavadoNuevo = cantidad +1;
         boolean noAgregado = true;
-        for (Prenda prenda : _prendasIncompatibles) {
+        for (Prenda prenda : _prendasSinLavado) {
             noAgregado = true;
             //Me fijo en los otros lavados mayor a su lavado
             for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i < maximoLavados; i++) {
                 Lavado lavado = _lavados.get(String.valueOf(i));
                 if (lavado != null && noAgregado) {
-                    if (lavado.sePuedelavar(prenda)) {
-                        lavado.addPrendaMenor(prenda);
+                    if (lavado.add(prenda)) {
                         noAgregado = false;
+                        break;
                     }
                 }
             }
+            //Agrego en un nuevo lavado
             if (noAgregado) {
-                this.add(String.valueOf(lavadoNuevo), prenda);
-                lavadoNuevo ++;
+                Lavado lavado = new Lavado(String.valueOf(maximoLavados), prenda);
+                _lavados.put(String.valueOf(maximoLavados), lavado);
+                maximoLavados ++;
                 
             }
         }

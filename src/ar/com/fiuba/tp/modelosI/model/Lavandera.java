@@ -9,9 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -23,19 +20,17 @@ public class Lavandera {
 
     private Logger logger = Logger.getLogger("Lavanderia");
     private int _cantidadRopa;
-    private HashMap<String, ArrayList<String>> _incompatibilidades = new HashMap<>();
+    //private HashMap<Prenda, ArrayList<String>> _incompatibilidades = new HashMap<>();
     private Prendas _prendas;
-    private Canastos _canastos;
     private Lavados _lavados;
     private Integer CANT_MAX_LAVADO = 0;
 
     public Lavandera(File datos) {
         _prendas = new Prendas();
-        _canastos = new Canastos();
         _lavados = new Lavados();
         logger.info("|Lavandera| recibiendo ropa...");
         guardarInformacionDePrendas(datos);
-        asignarPrendasCompatibles();
+        //asignarPrendasCompatibles();
         asignarLavados();
     }
 
@@ -84,7 +79,7 @@ public class Lavandera {
         }
     }
 
-    private void asignarPrendasCompatibles() {
+   /* private void asignarPrendasCompatibles() {
         for (int i = 0; i < _cantidadRopa; i++) {
             String prenda_i = String.valueOf(i + 1);
             ArrayList<String> prendasIncompatibles = _incompatibilidades.get(prenda_i);
@@ -96,7 +91,7 @@ public class Lavandera {
             }
 
         }
-    }
+    }*/
 
     private void guardarInformacionDePrendas(File datos) {
         try {
@@ -114,7 +109,7 @@ public class Lavandera {
     private void guardarInformacion(String data) {
         //Problema
         if (data.startsWith("p")) {
-            agregarMateriales(data);
+            crearPrendas(data);
         }
         //Incompatibilidades
         if (data.startsWith("e")) {
@@ -126,28 +121,30 @@ public class Lavandera {
         }
     }
 
+    private void crearPrendas(String data) {
+        _cantidadRopa = Integer.valueOf(data.split(" ")[2]);
+        for (int i = 0; i < _cantidadRopa; i++) {
+            String prenda_i = String.valueOf(i + 1);
+            //_incompatibilidades.put(new Prenda(prenda_i), new ArrayList<String>());
+            _prendas.add(prenda_i, new Prenda(prenda_i));
+        }
+    }
+    
     private void asignarIncompatibilidad(String data) {
         String[] e = data.split(" ");
-        ArrayList<String> incompatibles = _incompatibilidades.get(e[1]);
-        incompatibles.add(e[2]);
+        Prenda p = _prendas.get(e[1]);
+        p.addPrendaIncompatible(e[2]);
     }
 
     private void asignarTiempoLavado(String data) {
         String[] n = data.split(" ");
         if(Integer.valueOf(n[2]) > CANT_MAX_LAVADO)
             CANT_MAX_LAVADO = Integer.valueOf(n[2]);
-        _prendas.addTiempoLavado(n[1], n[2]);
-        _canastos.add(new Canasto(n[2]));        
+        Prenda p = _prendas.get(n[1]);
+        p.addTiempoLavado(n[2]);
+        //_canastos.add(new Canasto(n[2]));        
     }
 
-    private void agregarMateriales(String data) {
-        _cantidadRopa = Integer.valueOf(data.split(" ")[2]);
-        for (int i = 0; i < _cantidadRopa; i++) {
-            String prenda_i = String.valueOf(i + 1);
-            _incompatibilidades.put(prenda_i, new ArrayList<String>());
-            _prendas.add(prenda_i, new Prenda(prenda_i));
-        }
-    }
 
     private void asignarLavados() {
         for(Prenda prenda : _prendas.getPrendas()){

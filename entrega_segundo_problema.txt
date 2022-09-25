@@ -16,7 +16,11 @@ Soluciones:
 - Agrando la cantidad maxima de lavados pasando de 10 a 100, pero observo que me empieza a agregar los lavados a partir del 100 en adelante
 - Para no depender de la constante: al leer el archivo problema_2.txt saco y guardo el lavado maximo en una variable 
 (al leer los lavados voy comparando cada uno hasta quedarme con el de mayor lavado, asi a apartir de ahi puedo asignar nuevos lavados para las prendas que no sean compatibles con otras del mismo lavado)
-
+- En esta nueva version guardo en cada prenda una lista de sus incompatibles. (anteriormente tenia una lista de compatibles)
+- Me fijo en cada lavado que la nueva prenda a agregar sea compatible con todas las prendas que ya tiene el lavado.
+- Antes llamaba a un metodo que podia modificar el array de _prendasSinLavar y a la vez esta iterandola, por ese motivo rompia
+- Ahora como ya se que si no se puede agregar en ningun lavado, directamente agrego la prenda sola a un nuevo lavado.
 
 Opiniones:
 - solo encontre ese error de harcodeo por lo que se me hizo menos rebuscado que la primera vez.
+- Tuve que cambiar la forma de preguntar las incompatibilidades entre las prendas, (antes era muy rebuscada la forma que lo hacia)

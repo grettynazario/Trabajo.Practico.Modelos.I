@@ -1,5 +1,6 @@
 package ar.com.fiuba.tp.modelosI.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -22,7 +23,7 @@ public class Prendas {
     public void addPrendaCompatible(final String prenda,final  String compatible) {
         Prenda padre = _prendas.get(prenda);
         Prenda hijo = _prendas.get(compatible);
-        padre.add(hijo);
+        //padre.add(hijo);
     }
 
     void addTiempoLavado(final String prenda,final String tiempo) {
@@ -36,6 +37,10 @@ public class Prendas {
 
     public Prenda getPrenda(String key) {
         return _prendas.get(key);
+    }
+
+    public Prenda get(String nombre) {
+        return _prendas.get(nombre);
     }
 
 }

@@ -14,18 +14,20 @@ import java.util.List;
  */
 public class Prenda {
 
-    private final ArrayList<Prenda> _prendasCompatibles;
+    //private final ArrayList<Prenda> _prendasCompatibles;
+    private final ArrayList<String> _prendasIncompatibles;
     private final String _nombre;
     private String _tiempoLavado;
 
     public Prenda(final String nombre) {
-        _prendasCompatibles = new ArrayList<Prenda>();
+        //_prendasCompatibles = new ArrayList<Prenda>();
+        _prendasIncompatibles = new ArrayList<String>();
         _nombre = nombre;
     }
 
-    public void add(final Prenda prenda) {
+    /*public void add(final Prenda prenda) {
         _prendasCompatibles.add(prenda);
-    }
+    }*/
 
     public void addTiempoLavado(final String tiempo) {
         _tiempoLavado = tiempo;
@@ -48,22 +50,30 @@ public class Prenda {
         return _nombre;
     }
 
-    boolean esCompatible(Prenda aComparar) {
+   /* boolean esCompatible(Prenda aComparar) {
         for (Prenda prenda : _prendasCompatibles) {
             if (prenda.getNombre().equals(aComparar.getNombre())) {
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
-    public boolean esCompatible(List<Prenda> prendas) {
+    /*public boolean esCompatible(List<Prenda> prendas) {
         for (Prenda prenda : prendas) {
             if (!this.esCompatible(prenda)) {
                 return false;
             }
         }
         return true;
+    }*/
+
+    public void addPrendaIncompatible(String nombrePrenda) {
+        _prendasIncompatibles.add(nombrePrenda);
+    }
+
+    public boolean esCompatible(String nombre) {
+        return !_prendasIncompatibles.contains(nombre);
     }
 
 }

@@ -22,8 +22,13 @@ class Lavado {
         _nombre = nombre;
     }
 
+    Lavado(String nombre, Prenda prenda) {
+        _nombre = nombre;
+        _prendas.add(prenda);
+    }
+
     public boolean add(Prenda prenda) {
-        if (prenda.esCompatible(_prendas)) {
+        if (esCompatible(prenda)) {
             _prendas.add(prenda);
             return true;
         }
@@ -38,16 +43,24 @@ class Lavado {
         return _nombre;
     }
 
-    boolean sePuedelavar(Prenda prenda) {
+    /*boolean sePuedelavar(Prenda prenda) {
         for(Prenda prendaComp : _prendas){
             if(!prenda.esCompatible(prendaComp)){
                 return false;
             }
         }
         return true;
-    }
-
+    }*/
     public void addPrendaMenor(Prenda prenda) {
         _prendas.add(prenda);
+    }
+
+    private boolean esCompatible(Prenda prenda) {
+        for (Prenda prendaCompatible  : _prendas) {
+            if(!prenda.esCompatible(prendaCompatible.getNombre()) || !prendaCompatible.esCompatible(prenda.getNombre())){
+                return false;
+            }
+        }
+        return true;
     }
 }
