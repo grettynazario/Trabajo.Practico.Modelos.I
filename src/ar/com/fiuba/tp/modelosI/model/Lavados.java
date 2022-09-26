@@ -47,7 +47,7 @@ public class Lavados {
         for (Prenda prenda : _prendasSinLavado) {
             noAgregado = true;
             //Me fijo en los otros lavados mayor a su lavado
-            for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i < maximoLavados; i++) {
+            for (int i = Integer.valueOf(prenda.getTiempoLavado()) + 1; i <= maximoLavados; i++) {
                 Lavado lavado = _lavados.get(String.valueOf(i));
                 if (lavado != null && noAgregado) {
                     if (lavado.add(prenda)) {
@@ -58,9 +58,9 @@ public class Lavados {
             }
             //Agrego en un nuevo lavado
             if (noAgregado) {
-                Lavado lavado = new Lavado(String.valueOf(maximoLavados), prenda);
-                _lavados.put(String.valueOf(maximoLavados), lavado);
                 maximoLavados ++;
+                Lavado lavado = new Lavado(String.valueOf(maximoLavados ), prenda);
+                _lavados.put(String.valueOf(maximoLavados), lavado);
                 
             }
         }

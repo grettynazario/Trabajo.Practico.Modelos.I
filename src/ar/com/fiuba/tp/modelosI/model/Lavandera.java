@@ -54,16 +54,6 @@ public class Lavandera {
         try {
             logger.info("|Lavandera| Lavando...");
             FileWriter writer = new FileWriter("resources/lavadoOutput.txt");
-//            writer.write("c prendas sin lavado compatible\n");
-//            for (Prenda prenda : _canastos.getPrendasSinCanasto()) {
-//                writer.write("c " + prenda.getNombre() + "\n");
-//            }
-//            for (Canasto canasto : _canastos.getCanastos()) {
-//                for (Prenda prenda : canasto.getPrendas()) {
-//                    logger.info("|Lavandera| lavando prenda: " + prenda.getNombre());
-//                    writer.write(prenda.getNombre() + " " + canasto.getNombreLavado() + "\n");
-//                }
-//            }
             for (Lavado lavado : _lavados.getLavados()) {
                 for (Prenda prenda : lavado.getPrendas()) {
                     logger.info("|Lavandera| lavando prenda: " + prenda.getNombre());
